@@ -4,7 +4,10 @@ function porte() {
     "https://picsum.photos/50",
     "https://boxpect.click",
     "https://youtu.be/VvEUzKDrnQE",
-    "https://superiorintelligence.us.com/the-wall"
+    "https://superiorintelligence.us.com/the-wall",
+    "https://therevolvinginternet.com/",
+    "httpss://nowicantgotoamerica.com/",
+    "https://epic.horse",
   ];
   window.location.href = links[Math.floor(Math.random() * links.length)];
 }

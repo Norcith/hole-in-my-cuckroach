@@ -3,18 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./../style.css" />
-    <script src="./code.js"></script>
+    <style>
+      .invis_link {
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
+    <script>
+
+      function updateLinks() {
+        const toUpdate = document.querySelectorAll(".updCandidate");
+        toUpdate.forEach(area => {
+          area.querySelectorAll(".w").forEach(link => {
+            link.addEventListener("click", event => {
+              event.preventDefault();
+              show(link.getAttribute("href"))
+            })
+          })  
+        })
+      }
+      
+      function show(page) {
+        const main = document.getElementById("main")
+        let newPage = document.getElementById("t_404")
+        const template = document.getElementById(`t_${page}`);
+        if (template) {
+          newPage = template;
+        }
+        main.replaceChildren(newPage.content.cloneNode(true));
+        updateLinks()
+      }
+    </script>
   </head>
-  <style></style>
-  <body>
-    <h1>Les portes</h1>
-    <button onClick="porte()">
-      <img class="porte" src="./assets/porte.png" />
-    </button>
-    <button onClick="porte()">
-      <img class="porte" src="./assets/porte.png" />
-    </button>
+  <body onLoad="show('home')">
+    <h1 class="updCandidate"><a href="home" class="w invis_link">Comment retirer putain de cuckroach du lavomatique portable?</a></h1>
+    <nav class="updCandidate">
+      <a href="">Achievements</a>
+      •
+      <a class="w" href="photos">Photos</a>
+      •
+      <a href="">Religion</a>
+      •
+      <a href="">eShop</a>
+      •
+      <a href="https://retirerputaindecuckroachdulavomatiqueportable.info/index.html#a_cours">Cours</a>
+      •
+      <a href="">Politique</a>
+    </nav>
+    
+    <main class="updCandidate" id="main"></main>
+    
+    <template id="t_photos">
+      <script>
+        function p_new() {
+          const random = Math.floor(Math.random() * 10000);
+          const blur = Number(document.getElementById("photo_ia").value);
+          const isChecked = document.getElementById("photo_iv").checked;
+
+          const params = [blur && `blur=${blur}`, isChecked && "grayscale"].filter(Boolean);
+          const param_start = params.length ? "?" : "";
+          const param_content = params.join("&");
+          document.getElementById("photo_main").src =
+            `https://picsum.photos/seed/${random}/350/200${param_start}${param_content}`;
+        }
+      </script>
+      <h2>Album de vacances</h2>
+      <img id="photo_main" src="https://picsum.photos/350/200" />
+      <br />
+      <button onClick="p_new()">non je l'aime pas celle-là</button>
+      <details>
+        <summary>Options opinionnées</summary>
+        <label for="photo_iv">Vieux</label>
+        <input id="photo_iv" type="checkbox" />
+        <br />
+        <label for="photo_ia">Alcool</label>
+        <input
+          id="photo_ia"
+          type="range"
+          min="0"
+          max="10"
+          step="3"
+          value="0"
+        />
+      </details>
+    </template>
+    <template id="t_home">
+      <div id="cours">
+        <h2 id="a_cours">Méthodologie de français:</h2>
+        <ul>
+          <li><a href="">Commentaire littéraire</a></li>
+          <li><a href="">Dissertation</a></li>
+          <li><a href="">Lavomatique</a></li>
+        </ul>
+      </div>
+    </template>
+    <template id="t_404">
+      <h3>404 Pas vraiment trouvable</h3>
+    </template>
   </body>
 </html>

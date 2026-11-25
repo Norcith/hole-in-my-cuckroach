@@ -48,6 +48,8 @@
       •
       <a href="./index.html#a_cours">Cours</a>
       •
+      <a class="w" href="blog">Blog</a>
+      •
       <a href="">Politique</a>
       •
       <a href="./index.html#a_obseques">Obscèques</a>
@@ -55,6 +57,28 @@
     
     <main class="updCandidate" id="main"></main>
     
+    <template id="t_blog">
+      <script>
+        let i = 0
+        function b_show() {
+          const target = i + 10
+          const content = document.getElementById("b_content");
+          for (; i < target; i++) {
+              const random = Math.floor(Math.random() * 1000);
+              const day = Math.floor(Date.now() / 86400000) - i;
+              const htmlString = `
+  <div style="display: flex; align-items: center; gap: 16px;"><img src="https://picsum.photos/seed/${random}/50" alt="Thumbnail"><div><h4 style="margin: 0 0 4px 0;">It's still there</h4><p style="margin: 0;">Jour ${day} – Je sais toujours pas comment le retirer</p></div></div>
+<br>`;
+            content.insertAdjacentHTML('beforeend', htmlString);
+
+          }
+        }
+      </script>
+      <h2>Blog</h2>
+      <div id="b_content"></div>
+      <button onClick="b_show()">Afficher plus</button>
+      <script>b_show()</script>
+    </template>
     <template id="t_photos">
       <script>
         function p_new() {

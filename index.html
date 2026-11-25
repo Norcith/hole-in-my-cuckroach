@@ -65,7 +65,7 @@
           const content = document.getElementById("b_content");
           for (; i < target; i++) {
               const random = Math.floor(Math.random() * 1000);
-              const day = Math.floor(Date.now() / 86400000) - i;
+              const day = Math.floor(Date.now() / 86400000) - 6339 - i;
               const htmlString = `
   <div style="display: flex; align-items: center; gap: 16px;"><img src="https://picsum.photos/seed/${random}/50" alt="Thumbnail"><div><h4 style="margin: 0 0 4px 0;">It's still there</h4><p style="margin: 0;">Jour ${day} – Je sais toujours pas comment le retirer</p></div></div>
 <br>`;
